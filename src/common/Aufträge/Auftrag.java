@@ -1,7 +1,6 @@
 package common.Aufträge;
 
 import GUIController.MouseRobot;
-import common.AuftragInterface;
 
 public abstract class Auftrag implements AuftragInterface {
 

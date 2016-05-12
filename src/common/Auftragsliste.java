@@ -2,30 +2,37 @@ package common;
 
 import java.util.PriorityQueue;
 
-public class Auftragsliste implements AuftagslisteInterface{
+import common.Aufträge.AuftragInterface;
+import settings.Utils;
+
+public class Auftragsliste implements AuftragslisteInterface{
 	
 	private PriorityQueue<AuftragInterface> liste;
 	
-	private final int MAX_AUFTRAEGE = 100;
-
+	private int MAX_AUFTRAEGE;
+	
+	public Auftragsliste() {
+		liste = new PriorityQueue<AuftragInterface>();
+		MAX_AUFTRAEGE = Utils.PRIO_QUEUE_SIZE;
+	}
+	
 	@Override
-	public boolean isFull() {
+	public synchronized boolean isFull() {
 		return liste.size() > MAX_AUFTRAEGE;
 	}
 
 	@Override
-	public void add(AuftragInterface a) {
+	public synchronized void add(AuftragInterface a) {
 		liste.add(a);
 	}
 
 	@Override
-	public AuftragInterface next() {
-		return liste.peek();
+	public synchronized AuftragInterface next() {
+		return liste.poll();
 	}
 
 	@Override
-	public void clear() {
+	public synchronized void clear() {
 		liste.clear();	
 	}
-
 }

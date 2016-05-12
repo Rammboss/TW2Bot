@@ -1,7 +1,8 @@
 package common;
 
-public interface AuftagslisteInterface {
+import common.Aufträge.AuftragInterface;
 
+public interface AuftragslisteInterface {
 	public boolean isFull();
 
 	public void add(AuftragInterface a);
@@ -9,5 +10,4 @@ public interface AuftagslisteInterface {
 	public AuftragInterface next();
 	
 	public void clear();
-
 }

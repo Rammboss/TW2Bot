@@ -24,5 +24,7 @@ public class Utils {
 	 * Für Klasse Icon
 	 */
 	public static final int TOLERANZ = 5;
+	public static final int PRIO_QUEUE_SIZE = 100;
+	public static boolean RUNNING = true;;
 
 }
