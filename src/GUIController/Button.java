@@ -6,15 +6,18 @@ import java.io.File;
 import settings.Utils;
 
 public class Button {
-	
+
 	private Point point;
 	private IconInterface icon;
 
-	
 	public Button(Point point, String path) {
 		super();
 		this.point = point;
 		this.icon = new Icon(point, new File(Utils.SCREENSHOT_PATH + path));
+	}
+
+	public boolean check() {
+		return this.getIcon().check();
 	}
 
 	public Point getPoint() {
@@ -32,7 +35,5 @@ public class Button {
 	public void setIcon(IconInterface icon) {
 		this.icon = icon;
 	}
-
-
 
 }
