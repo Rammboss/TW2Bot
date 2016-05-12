@@ -8,6 +8,7 @@ import settings.Utils;
 
 public class EnterKoordinaten extends OpenSeachOnMap {
 
+
 	private Point farm;
 
 	public EnterKoordinaten(int p, Point farm) {
@@ -24,7 +25,6 @@ public class EnterKoordinaten extends OpenSeachOnMap {
 			robot.enterKoordinate(farm.x);
 
 		}
-		
 		robot.wait(Utils.DELAY_TASTENDRUCK);
 
 		if (Buttons.ENTER_Y.check()) {
