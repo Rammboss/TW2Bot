@@ -2,7 +2,7 @@ package common.Aufträge;
 
 import GUIController.Buttons;
 import GUIController.MouseRobot;
-import bot.Barbarendorf;
+import bot.Babarendorf;
 import bot.Dorf;
 import bot.Spielerdorf;
 
@@ -11,7 +11,7 @@ public class AngriffDorf extends EnterKoordinaten {
 	private int hotkey;
 	private Dorf farm;
 
-	public AngriffDorf(int p, Dorf farm, int hotkey, String art) {
+	public AngriffDorf(int p, Dorf farm, int hotkey) {
 		super(p, farm.getPosition());
 		this.hotkey = hotkey;
 		this.farm = farm;
@@ -26,8 +26,11 @@ public class AngriffDorf extends EnterKoordinaten {
 	}
 
 	private boolean checkDorf() {
-		if (farm instanceof Barbarendorf) {
+		System.out.println("hi");
+		if (farm instanceof Babarendorf) {
+			System.out.println(Buttons.CHECKBARBARENDORF.check());
 			return Buttons.CHECKBARBARENDORF.check();
+			
 
 		} else if (farm instanceof Spielerdorf) {
 			// Muss noch implementiert werden für Spieler

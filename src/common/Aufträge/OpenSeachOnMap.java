@@ -13,7 +13,11 @@ public class OpenSeachOnMap extends Auftrag {
 	public void run(MouseRobot robot) {
 		if (!Buttons.ENTER_X.check())
 			robot.click(Buttons.SEARCH_ON_MAP);
+	}
 
+	@Override
+	public boolean check() {
+		return Buttons.ENTER_X.check();
 	}
 
 }

@@ -1,7 +1,9 @@
 package common;
 
+import java.util.Date;
 import java.util.PriorityQueue;
 
+import GUIController.MouseRobot;
 import common.Aufträge.AuftragInterface;
 import settings.Utils;
 
@@ -23,6 +25,8 @@ public class Auftragsliste implements AuftragslisteInterface{
 
 	@Override
 	public synchronized void add(AuftragInterface a) {
+		MouseRobot.wait(5);
+		a.setTime(new Date().getTime());
 		liste.add(a);
 	}
 

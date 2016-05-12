@@ -38,7 +38,7 @@ public class MouseRobot {
 		click(b);
 	}
 
-	public void wait(int millis) {
+	public static void wait(int millis) {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
@@ -46,7 +46,7 @@ public class MouseRobot {
 		}
 	}
 
-	public void wait(long min, TimeUnit t) {
+	public static void wait(long min, TimeUnit t) {
 		try {
 
 			Thread.sleep(t.toMillis(min));

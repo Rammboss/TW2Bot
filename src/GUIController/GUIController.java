@@ -21,6 +21,11 @@ public class GUIController implements Runnable{
 			AuftragInterface a = list.next();
 			if(a != null){
 				a.run(mouseRobot);
+				if(!a.check()){
+					a.setPriority(a.getPriority() +1 );
+					list.add(a);
+				}
+				
 			}
 		}
 	}

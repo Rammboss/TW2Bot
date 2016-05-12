@@ -20,5 +20,8 @@ public class EigenesDorfSelecten extends EnterKoordinaten{
 			System.out.println("at EigenesDorfSelecten: 16");
 		}
 	}
+	public boolean check() {
+		return true;
+	}
 
 }

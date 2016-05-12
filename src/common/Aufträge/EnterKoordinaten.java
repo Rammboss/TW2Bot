@@ -25,14 +25,20 @@ public class EnterKoordinaten extends OpenSeachOnMap {
 			robot.enterKoordinate(farm.x);
 
 		}
-		robot.wait(Utils.DELAY_TASTENDRUCK);
+		MouseRobot.wait(Utils.DELAY_TASTENDRUCK);
 
 		if (Buttons.ENTER_Y.check()) {
 			robot.doubleClick(Buttons.ENTER_Y);
 			robot.enterKoordinate(farm.y);
-
 		}
-
+		MouseRobot.wait(Utils.DELAY_TASTENDRUCK);
+		robot.click(Buttons.SEARCH_VIllAGE);
+		
+		MouseRobot.wait(2000);					//**********Warte auf GUI***********
+	}
+	@Override
+	public boolean check() {
+		return Buttons.IS_SELECTED.check();
 	}
 
 
