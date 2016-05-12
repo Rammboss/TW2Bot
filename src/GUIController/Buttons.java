@@ -9,6 +9,9 @@ public class Buttons {
 	public static final Button ENTER_X = new Button(new Point(144, 581), "1.png");
 	
 	public static final Button ENTER_Y = new Button(new Point(283, 581), "1.png");
+	
+	public static final Button CHECKBARBARENDORF = new Button(new Point(106, 443), "1.png");
+
 
 
 

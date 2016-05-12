@@ -24,6 +24,7 @@ public class EnterKoordinaten extends OpenSeachOnMap {
 			robot.enterKoordinate(farm.x);
 
 		}
+		
 		robot.wait(Utils.DELAY_TASTENDRUCK);
 
 		if (Buttons.ENTER_Y.check()) {
