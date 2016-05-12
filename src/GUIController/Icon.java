@@ -6,7 +6,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-import Constants.Settings;
 import GUIController.imageHandler.ImageHandler;
 import io.Filehandler;
 import settings.Utils;
