@@ -24,5 +24,9 @@ public abstract class Auftrag implements AuftragInterface {
 	public void setPriority(int priority) {
 		this.priority = priority;
 	}
+	
+	public int compareTo(AuftragInterface ai){
+		return this.priority - ai.getPriority();
+	}
 
 }

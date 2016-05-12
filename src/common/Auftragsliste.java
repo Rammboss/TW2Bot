@@ -1,23 +1,28 @@
 package common;
 
+import java.util.PriorityQueue;
+
+import common.Aufträge.Auftrag;
+
 public class Auftragsliste implements AuftagslisteInterface{
+	
+	private PriorityQueue<AuftragInterface> liste;
+	
+	private final int MAX_AUFTRAEGE = 100;
 
 	@Override
 	public boolean isFull() {
-		// TODO Auto-generated method stub
-		return false;
+		return liste.size() > MAX_AUFTRAEGE;
 	}
 
 	@Override
 	public void add(AuftragInterface a) {
-		// TODO Auto-generated method stub
-		
+		liste.add(a);
 	}
 
 	@Override
 	public AuftragInterface next() {
-		// TODO Auto-generated method stub
-		return null;
+		return liste.peek();
 	}
 
 }
