@@ -10,6 +10,8 @@ public class Utils {
 	
 	public static final int ICON_SIZE = 10;
 	
+	public static final int DELAY_TASTENDRUCK = 100;
+	
 	public static final HWND HWND = User32.INSTANCE.FindWindow(null, APP_PLAYER_WINDOW_TITLE);
 
 }
