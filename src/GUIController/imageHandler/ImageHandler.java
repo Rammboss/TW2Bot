@@ -1,4 +1,4 @@
-package io;
+package GUIController.imageHandler;
 
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -24,7 +24,7 @@ public class ImageHandler {
 
 	}
 
-	public static BufferedImage getScreenshot(HWND hwnd) {
+	public BufferedImage getScreenshot(HWND hwnd) {
 		GDI32Plus gdi32 = GDI32Plus.INSTANCE;
 		User32Plus user32 = User32Plus.INSTANCE;
 
@@ -69,7 +69,7 @@ public class ImageHandler {
 		}
 	}
 
-	private static BufferedImage bufferedImageFromBitmap(HDC blitDC, HBITMAP outputBitmap, BITMAPINFO bi) {
+	private BufferedImage bufferedImageFromBitmap(HDC blitDC, HBITMAP outputBitmap, BITMAPINFO bi) {
 		GDI32Plus gdi32 = GDI32Plus.INSTANCE;
 
 		BITMAPINFOHEADER bih = bi.bmiHeader;
