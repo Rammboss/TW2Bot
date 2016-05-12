@@ -56,18 +56,9 @@ public class MouseRobot {
 
 	public void enterKoordinate(int x) {
 
-		int einer = (x % 100) % 10;
-		int zehner = ((x % 100) - einer) / 10;
-		int hunderter = (x - zehner - einer) / 100;
-
-		ArrayList<Integer> tmp = new ArrayList<Integer>();
-		tmp.add(hunderter);
-		tmp.add(zehner);
-		tmp.add(einer);
-
-		for (int i : tmp) {
-
-			switch (i) {
+		switch (x) {
+		case 0 - 10:
+			switch (x) {
 			case 0:
 				keyDown(0x0030);
 				break;
@@ -103,8 +94,62 @@ public class MouseRobot {
 
 				break;
 			}
+			break;
 
+		default:
+			int einer = (x % 100) % 10;
+			int zehner = ((x % 100) - einer) / 10;
+			int hunderter = (x - zehner - einer) / 100;
+
+			ArrayList<Integer> tmp = new ArrayList<Integer>();
+			tmp.add(hunderter);
+			tmp.add(zehner);
+			tmp.add(einer);
+
+			for (int i : tmp) {
+
+				switch (i) {
+				case 0:
+					keyDown(0x0030);
+					break;
+				case 1:
+					keyDown(0x0031);
+					break;
+				case 2:
+					keyDown(0x0032);
+					break;
+				case 3:
+					keyDown(0x0033);
+					break;
+				case 4:
+					keyDown(0x0034);
+					break;
+				case 5:
+					keyDown(0x0035);
+					break;
+				case 6:
+					keyDown(0x0036);
+					break;
+				case 7:
+					keyDown(0x0037);
+					break;
+				case 8:
+					keyDown(0x0038);
+					break;
+				case 9:
+					keyDown(0x0039);
+					break;
+
+				default:
+
+					break;
+				}
+
+			}
+
+			break;
 		}
+
 	}
 
 	private void keyDown(int i) {
