@@ -1,17 +1,21 @@
 package common.Aufträge;
 
+import GUIController.Buttons;
 import GUIController.MouseRobot;
 
-public class EnterKoordinaten extends Auftrag {
+public class EnterKoordinaten extends OpenSeachOnMap {
 
 	public EnterKoordinaten(int p) {
 		super(p);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void run(MouseRobot robot) {
-		// TODO Auto-generated method stub
+		super.run(robot);
+		
+		if(Buttons.ENTER_X.check()){
+			
+		}
 
 	}
 
