@@ -7,5 +7,7 @@ public interface AuftagslisteInterface {
 	public void add(AuftragInterface a);
 
 	public AuftragInterface next();
+	
+	public void clear();
 
 }

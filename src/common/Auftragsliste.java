@@ -2,8 +2,6 @@ package common;
 
 import java.util.PriorityQueue;
 
-import common.Aufträge.Auftrag;
-
 public class Auftragsliste implements AuftagslisteInterface{
 	
 	private PriorityQueue<AuftragInterface> liste;
@@ -23,6 +21,11 @@ public class Auftragsliste implements AuftagslisteInterface{
 	@Override
 	public AuftragInterface next() {
 		return liste.peek();
+	}
+
+	@Override
+	public void clear() {
+		liste.clear();	
 	}
 
 }

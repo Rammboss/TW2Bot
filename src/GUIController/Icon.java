@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
+import GUIController.imageHandler.ImageHandler;
 import io.Filehandler;
 import settings.Utils;
 
@@ -23,9 +24,10 @@ public class Icon implements IconInterface {
 
 	@Override
 	public boolean check() {
+		
+		ImageHandler ih = new ImageHandler();
+		BufferedImage br = ih.getScreenshot();
 		return false;
-		
-		
 	}
 
 	public Rectangle getRect() {

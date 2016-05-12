@@ -18,13 +18,16 @@ import com.sun.jna.platform.win32.WinGDI.BITMAPINFO;
 import com.sun.jna.platform.win32.WinGDI.BITMAPINFOHEADER;
 import com.sun.jna.platform.win32.WinNT.HANDLE;
 
+import settings.Utils;
+
 public class ImageHandler {
 
 	public ImageHandler() {
 
 	}
 
-	public BufferedImage getScreenshot(HWND hwnd) {
+	public BufferedImage getScreenshot() {
+		HWND hwnd = Utils.HWND;
 		GDI32Plus gdi32 = GDI32Plus.INSTANCE;
 		User32Plus user32 = User32Plus.INSTANCE;
 
