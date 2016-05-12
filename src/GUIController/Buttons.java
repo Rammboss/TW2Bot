@@ -12,7 +12,7 @@ public class Buttons {
 	
 	public static final Button CHECKBARBARENDORF = new Button(new Point(106, 443), "1.png");
 
-
+	public static final Button IS_MY_DORF = new Button(new Point(406, 442), "2.png");
 
 
 }
