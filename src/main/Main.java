@@ -13,7 +13,9 @@ import common.Aufträge.AuftragInterface;
 import common.Aufträge.EnterKoordinaten;
 import settings.Utils;
 
-public class Main {
+public class Main {	
+	
+	//https://de.forum.tribalwars2.com/index.php?threads/weltdaten-api.2640/
 
 	public static void main(String[] args) {
 		AuftragslisteInterface ai = new Auftragsliste();
