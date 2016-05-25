@@ -28,21 +28,16 @@ public class AuftragsHandler implements Runnable {
 
 	@Override
 	public void run() {
-		while (Utils.RUNNING) {
 
-			addFarms();
-			addRohstofflager();
-
-			MouseRobot.wait(10000);
-
-		}
+		addFarms();
+		addRohstofflager();
 
 	}
 
 	private void addRohstofflager() {
 
 		if (Utils.LAGER.getChecked() + (7 * 60 * 1000) < new Date().getTime())
-			this.list.add(new CheckRohstofflager(2, Utils.LAGER.getPosition(), false));
+			this.list.add(new CheckRohstofflager(Utils.PRIO_CHECKROHSTOFFLAGER, Utils.LAGER, false));
 
 	}
 
@@ -52,7 +47,7 @@ public class AuftragsHandler implements Runnable {
 
 		for (Babarendorf d : list) {
 			if (d.farmable())
-				this.list.add(new AngriffDorf(Utils.ANGRIFFDORF, d, 3));
+				this.list.add(new AngriffDorf(Utils.PRIO_ANGRIFFDORF, d, 3));
 		}
 
 	}
@@ -77,9 +72,7 @@ public class AuftragsHandler implements Runnable {
 		AuftragslisteInterface list = new Auftragsliste();
 		MouseRobot robot = new MouseRobot(Utils.HWND);
 		GUIController gc = new GUIController(list, robot);
-		AuftragsHandler ah = new AuftragsHandler(list, gc);
 
-		new Thread(ah).start();
 		new Thread(gc).start();
 
 	}

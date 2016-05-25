@@ -20,14 +20,17 @@ public class Auftragsliste implements AuftragslisteInterface {
 
 	@Override
 	public synchronized boolean isFull() {
-		return liste.size() > MAX_AUFTRAEGE;
+		return liste.size() > MAX_AUFTRAEGE - 1;
 	}
 
 	@Override
 	public synchronized void add(AuftragInterface a) {
-		MouseRobot.wait(5);
-		a.setTime(new Date().getTime());
-		liste.add(a);
+		if (!isFull()) {
+			MouseRobot.wait(5);
+			a.setTime(new Date().getTime());
+			liste.add(a);
+		}
+
 	}
 
 	@Override
@@ -42,6 +45,6 @@ public class Auftragsliste implements AuftragslisteInterface {
 
 	@Override
 	public int size() {
-		return this.size();
+		return liste.size();
 	}
 }

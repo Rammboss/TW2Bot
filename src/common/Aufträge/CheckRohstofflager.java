@@ -1,18 +1,19 @@
 package common.Aufträge;
 
-import java.awt.Point;
+import java.util.Date;
 
 import GUIController.Buttons;
 import GUIController.MouseRobot;
-import bot.Dorf;
+import bot.Rohstofflager;
 
 public class CheckRohstofflager extends EnterKoordinaten {
 
-	private Dorf rohstofflager;
+	private Rohstofflager rohstofflager;
 	private boolean item;
 
-	public CheckRohstofflager(int p, Point farm, boolean item) {
-		super(p, farm);
+	public CheckRohstofflager(int p, Rohstofflager lager, boolean item) {
+		super(p, lager.getPosition());
+		rohstofflager = lager;
 		this.item = item;
 	}
 
@@ -53,16 +54,22 @@ public class CheckRohstofflager extends EnterKoordinaten {
 			robot.click(Buttons.ROHSTOFFLAGER_COLLECT);
 			MouseRobot.wait(1000);
 			robot.click(Buttons.ROHSTOFFLAGER_START);
+			MouseRobot.wait(1000);
 			robot.click(Buttons.CLOSE);
+			this.rohstofflager.setChecked(new Date().getTime());
 		}
 
 	}
 
-	public Dorf getRohstofflager() {
+	public boolean check() {
+		return true;
+	}
+
+	public Rohstofflager getRohstofflager() {
 		return rohstofflager;
 	}
 
-	public void setRohstofflager(Dorf rohstofflager) {
+	public void setRohstofflager(Rohstofflager rohstofflager) {
 		this.rohstofflager = rohstofflager;
 	}
 

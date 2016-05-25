@@ -19,7 +19,7 @@ public class Buttons {
 
 	public static final Button USEITEM = new Button(459, 567, "RohstofflagerOpen.png");
 
-	public static final Button ROHSTOFFLAGER_START = new Button(105, 746, "RohstofflagerOpen.png");
+	public static final Button ROHSTOFFLAGER_START = new Button(182, 644, "RohstofflagerOpen.png");
 
 	public static final Button USEGEGENSTAND = new Button(513, 527, "Gegenstand benutzen.png");
 
