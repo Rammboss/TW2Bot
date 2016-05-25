@@ -12,4 +12,6 @@ public interface AuftragslisteInterface {
 	public int size();
 	
 	public void clear();
+	
+	public int containsAuftraege(String typ);
 }

@@ -1,6 +1,5 @@
 package GUIController;
 
-
 public class Buttons {
 
 	public static final Button SEARCH_ON_MAP = new Button(126, 718, "1.png");
@@ -11,7 +10,7 @@ public class Buttons {
 
 	public static final Button CHECKBARBARENDORF = new Button(423, 443, "1.png");
 
-	public static final Button IS_MY_DORF = new Button(406, 442, "2.png");
+	public static final Button IS_MY_DORF = new Button(407, 444, "2.png");
 
 	public static final Button IS_SELECTED = new Button(512, 310, "1.png");
 
@@ -26,5 +25,9 @@ public class Buttons {
 	public static final Button ROHSTOFFLAGER_COLLECT = new Button(513, 442);
 
 	public static final Button CLOSE = new Button(702, 223, "RohstofflagerOpen.png");
+
+	public static final Button ERROR = new Button(614, 614, "ErrorAttack.png");
+
+	public static final Button CHANGE_CURRENT_VILLAGE = new Button(407, 444, "2.png");
 
 }

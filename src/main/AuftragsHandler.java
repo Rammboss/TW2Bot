@@ -4,6 +4,7 @@ package main;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 
 import GUIController.GUIController;
 import GUIController.MouseRobot;
@@ -18,37 +19,41 @@ import settings.Utils;
 public class AuftragsHandler implements Runnable {
 
 	private AuftragslisteInterface list;
-	private GUIController gc;
+	ArrayList<Babarendorf> farms;
+	Iterator<Babarendorf> iter;
 
-	public AuftragsHandler(AuftragslisteInterface a, GUIController b) {
+	public AuftragsHandler(AuftragslisteInterface a) {
 		this.list = a;
-		this.gc = b;
-
-	}
-
-	@Override
-	public void run() {
-
-		addFarms();
-		addRohstofflager();
+		farms = Filehandler.readData(new File("TXT\\c.txt"));
+		iter = farms.iterator();
+		Utils.ITER = Utils.ACCOUNTS.get(0).iterator();
+		Utils.CURRENT = Utils.ITER.next();
 
 	}
 
 	private void addRohstofflager() {
+		if (list.containsAuftraege("class common.Aufträge.CheckRohstofflager") < 1
+				&& Utils.LAGER.getChecked() + (7 * 60 * 1000) < new Date().getTime()) {
 
-		if (Utils.LAGER.getChecked() + (7 * 60 * 1000) < new Date().getTime())
-			this.list.add(new CheckRohstofflager(Utils.PRIO_CHECKROHSTOFFLAGER, Utils.LAGER, false));
+			list.add(new CheckRohstofflager(Utils.PRIO_CHECKROHSTOFFLAGER, Utils.LAGER, false));
+
+		}
 
 	}
 
 	private void addFarms() {
+		Babarendorf baba;
+		
+		if(list.containsAuftraege("class common.Aufträge.AngriffDorf") <= 4){
+			if (iter.hasNext()) {
+				baba = iter.next();
 
-		ArrayList<Babarendorf> list = Filehandler.readData(new File("TXT\\c.txt"));
-
-		for (Babarendorf d : list) {
-			if (d.farmable())
-				this.list.add(new AngriffDorf(Utils.PRIO_ANGRIFFDORF, d, 3));
+				if (baba.farmable())
+					this.list.add(new AngriffDorf(Utils.PRIO_ANGRIFFDORF, baba, Utils.CURRENT.getFarmHotkey()));
+			}
 		}
+
+		
 
 	}
 
@@ -60,20 +65,26 @@ public class AuftragsHandler implements Runnable {
 		this.list = list;
 	}
 
-	public GUIController getGc() {
-		return gc;
-	}
-
-	public void setGc(GUIController gc) {
-		this.gc = gc;
-	}
-
 	public static void main(String[] args) {
 		AuftragslisteInterface list = new Auftragsliste();
 		MouseRobot robot = new MouseRobot(Utils.HWND);
 		GUIController gc = new GUIController(list, robot);
+		AuftragsHandler ah = new AuftragsHandler(list);
 
+		new Thread(ah).start();
 		new Thread(gc).start();
+
+	}
+
+	@Override
+	public void run() {
+		while (Utils.RUNNING) {
+			addRohstofflager();
+			addFarms();
+
+			MouseRobot.wait(3000);
+
+		}
 
 	}
 

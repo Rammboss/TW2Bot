@@ -8,7 +8,6 @@ import settings.Utils;
 
 public class EnterKoordinaten extends OpenSeachOnMap {
 
-
 	private Point farm;
 
 	public EnterKoordinaten(int p, Point farm) {
@@ -33,13 +32,13 @@ public class EnterKoordinaten extends OpenSeachOnMap {
 		}
 		MouseRobot.wait(Utils.DELAY_TASTENDRUCK);
 		robot.click(Buttons.SEARCH_VIllAGE);
-		
-		MouseRobot.wait(2000);					//**********Warte auf GUI***********
+
+		MouseRobot.wait(2000); // **********Warte auf GUI***********
 	}
+
 	@Override
 	public boolean check() {
 		return Buttons.IS_SELECTED.check();
 	}
-
 
 }

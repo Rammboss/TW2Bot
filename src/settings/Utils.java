@@ -1,9 +1,11 @@
 package settings;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.Advapi32Util.Account;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
 import bot.EigenesDorf;
@@ -15,6 +17,9 @@ public class Utils {
 	public static final String SCREENSHOT_PATH = "Screenshots\\";
 
 	public static final Rohstofflager LAGER = new Rohstofflager(413, 423, "Rohstofflager");
+	public static  Iterator<EigenesDorf> ITER = null;
+	public static  EigenesDorf CURRENT = null;
+
 
 	public static final int ICON_SIZE = 10;
 
@@ -31,7 +36,7 @@ public class Utils {
 	 * Für Klasse Icon
 	 */
 	public static final int TOLERANZ = 5;
-	public static final int PRIO_QUEUE_SIZE = 5;
+	public static final int PRIO_QUEUE_SIZE = 1000;
 	public static boolean RUNNING = true;
 
 	/**
@@ -77,8 +82,11 @@ public class Utils {
 		DerZurecker.add(new EigenesDorf(3, 411, 392, "C07"));
 		DerZurecker.add(new EigenesDorf(3, 413, 389, "C08"));
 
-		Rammboss.add(new EigenesDorf(3, 413, 421, "001"));
-		Rammboss.add(new EigenesDorf(3, 415, 418, "002"));
+		/**
+		 * 1 = Axt 2 = lkav 3 = speerträger 4 = berit. Bogen
+		 */
+		Rammboss.add(new EigenesDorf(1, 413, 421, "001"));
+		Rammboss.add(new EigenesDorf(1, 415, 418, "002"));
 		Rammboss.add(new EigenesDorf(1, 416, 427, "003"));
 		Rammboss.add(new EigenesDorf(4, 415, 429, "004"));
 		Rammboss.add(new EigenesDorf(2, 415, 427, "005"));

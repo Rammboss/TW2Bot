@@ -1,6 +1,7 @@
 package common;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.PriorityQueue;
 
 import GUIController.MouseRobot;
@@ -46,5 +47,15 @@ public class Auftragsliste implements AuftragslisteInterface {
 	@Override
 	public int size() {
 		return liste.size();
+	}
+
+	@Override
+	public int containsAuftraege(String typ) {
+		int counter = 0;
+		for(AuftragInterface a : liste){
+			if(typ.equals(a.getClass().toString()))
+				counter++;
+		}
+		return counter;
 	}
 }

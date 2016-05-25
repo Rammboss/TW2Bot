@@ -8,7 +8,7 @@ import GUIController.MouseRobot;
 import bot.Babarendorf;
 import bot.Gegnerdorf;
 
-public class AngriffDorf extends EnterKoordinaten {
+public class AngriffDorf extends CheckError {
 
 	private int hotkey;
 	private Gegnerdorf farm;

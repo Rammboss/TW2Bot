@@ -2,7 +2,6 @@ package GUIController;
 
 import common.AuftragslisteInterface;
 import common.Aufträge.AuftragInterface;
-import main.AuftragsHandler;
 import settings.Utils;
 
 public class GUIController implements Runnable {
@@ -19,7 +18,7 @@ public class GUIController implements Runnable {
 	public void run() {
 		while (Utils.RUNNING) {
 			AuftragInterface a = list.next();
-		
+
 			if (a != null) {
 				a.run(mouseRobot);
 				if (!a.check()) { // falls Aufrtag nicht erfüllt wurde
@@ -27,10 +26,9 @@ public class GUIController implements Runnable {
 					list.add(a);
 				}
 
-			}if(list.size() < 5 ){
-				new AuftragsHandler(list, this).run();
 			}
-			System.out.println("Anzahl der Elemente:" + list.size());
+			System.out.println( "Anzahl Aufträge: " + list.size());
+			MouseRobot.wait(1000);
 		}
 	}
 

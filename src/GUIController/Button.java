@@ -15,6 +15,7 @@ public class Button {
 		this.point = new Point(x, y);
 		this.icon = new Icon(point, new File(Utils.SCREENSHOT_PATH + path));
 	}
+
 	public Button(int x, int y) {
 		super();
 		this.point = new Point(x, y);
@@ -22,6 +23,10 @@ public class Button {
 
 	public boolean check() {
 		return this.getIcon().check();
+	}
+
+	public boolean IsActive(int time) {
+		return this.getIcon().isActive(time);
 	}
 
 	public Point getPoint() {
