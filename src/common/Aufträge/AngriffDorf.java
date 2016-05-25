@@ -1,17 +1,19 @@
 package common.Aufträge;
 
+
+import java.util.Date;
+
 import GUIController.Buttons;
 import GUIController.MouseRobot;
 import bot.Babarendorf;
-import bot.Dorf;
-import bot.Spielerdorf;
+import bot.Gegnerdorf;
 
 public class AngriffDorf extends EnterKoordinaten {
 
 	private int hotkey;
-	private Dorf farm;
+	private Gegnerdorf farm;
 
-	public AngriffDorf(int p, Dorf farm, int hotkey) {
+	public AngriffDorf(int p, Gegnerdorf farm, int hotkey) {
 		super(p, farm.getPosition());
 		this.hotkey = hotkey;
 		this.farm = farm;
@@ -22,17 +24,18 @@ public class AngriffDorf extends EnterKoordinaten {
 		super.run(robot);
 		if (checkDorf()) {
 			robot.enterKoordinate(hotkey);
+			Date d = new Date();
+			farm.setLetzterAngriff(d.getTime());
 		}
 	}
 
 	private boolean checkDorf() {
-		System.out.println("hi");
 		if (farm instanceof Babarendorf) {
 			System.out.println(Buttons.CHECKBARBARENDORF.check());
 			return Buttons.CHECKBARBARENDORF.check();
 			
 
-		} else if (farm instanceof Spielerdorf) {
+		} else if (farm instanceof Gegnerdorf) {
 			// Muss noch implementiert werden für Spieler
 			return false;
 		}

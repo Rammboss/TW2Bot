@@ -1,12 +1,23 @@
 package settings;
 
+import java.io.File;
+
+import com.sun.javafx.iio.common.RoughScaler;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
+import bot.Dorf;
+import bot.Rohstofflager;
+
+
 public class Utils {
 	
-	public static final String APP_PLAYER_WINDOW_TITLE = "Tribal Wars 2 (1.54) - Mozilla Firefox";
+	public static final String APP_PLAYER_WINDOW_TITLE = "Tribal Wars 2 (1.55) - Mozilla Firefox";
 	public static final String SCREENSHOT_PATH = "Screenshots\\";
+	
+	public static final Rohstofflager LAGER = new Rohstofflager(413, 423, "Rohstofflager");
+	
+	
 	
 	public static final int ICON_SIZE = 10;
 	
@@ -25,6 +36,12 @@ public class Utils {
 	 */
 	public static final int TOLERANZ = 5;
 	public static final int PRIO_QUEUE_SIZE = 100;
-	public static boolean RUNNING = true;;
+	public static boolean RUNNING = true;
+	
+	/**
+	 * Prioritäten für Aufträge
+	 */
+	public static int ANGRIFFDORF = 5;
+
 
 }

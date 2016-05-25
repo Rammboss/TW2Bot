@@ -7,17 +7,17 @@ import GUIController.MouseRobot;
 import common.Aufträge.AuftragInterface;
 import settings.Utils;
 
-public class Auftragsliste implements AuftragslisteInterface{
-	
+public class Auftragsliste implements AuftragslisteInterface {
+
 	private PriorityQueue<AuftragInterface> liste;
-	
+
 	private int MAX_AUFTRAEGE;
-	
+
 	public Auftragsliste() {
 		liste = new PriorityQueue<AuftragInterface>();
 		MAX_AUFTRAEGE = Utils.PRIO_QUEUE_SIZE;
 	}
-	
+
 	@Override
 	public synchronized boolean isFull() {
 		return liste.size() > MAX_AUFTRAEGE;
@@ -37,6 +37,11 @@ public class Auftragsliste implements AuftragslisteInterface{
 
 	@Override
 	public synchronized void clear() {
-		liste.clear();	
+		liste.clear();
+	}
+
+	@Override
+	public int size() {
+		return this.size();
 	}
 }

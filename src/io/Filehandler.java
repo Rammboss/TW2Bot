@@ -1,26 +1,17 @@
 package io;
 
-import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.util.Scanner;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import com.sun.corba.se.impl.orbutil.ObjectWriter;
-import com.sun.prism.Image;
-
-import GUIController.Icon;
-import GUIController.Screenshots;
+import bot.Babarendorf;
 
 public class Filehandler {
 	/**
@@ -46,7 +37,7 @@ public class Filehandler {
 	}
 
 	private static void saveIcon(BufferedImage icon) {
-		
+
 		try {
 			ImageIO.write(icon, "png", new File("C:\\Temp\\x.png"));
 		} catch (IOException e) {
@@ -69,9 +60,31 @@ public class Filehandler {
 		return image;
 	}
 
-	public static void main(String[] args) {
-		Icon test = new Icon(new Point(127,718), Screenshots.s1);
-		
+	public static ArrayList<Babarendorf> readData(File path) {
+		ArrayList<Babarendorf> list = new ArrayList<>();
+
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(path));
+			do {
+				String tmp = br.readLine();
+				if (tmp != null) {
+					String[] tmp2 = tmp.split("|");
+					int x = Integer.parseInt((tmp2[0] + tmp2[1] + tmp2[2]));
+					int y = Integer.parseInt((tmp2[4] + tmp2[5] + tmp2[6]));
+					long gefarmed = Long.parseLong(tmp.substring(8, tmp.length()));
+					list.add(new Babarendorf(x, y, gefarmed));
+				} else {
+					break;
+				}
+
+			} while (true);
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return list;
 
 	}
 

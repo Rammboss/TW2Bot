@@ -9,5 +9,7 @@ public interface AuftragslisteInterface {
 
 	public AuftragInterface next();
 	
+	public int size();
+	
 	public void clear();
 }

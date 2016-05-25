@@ -1,23 +1,29 @@
 package bot;
+
+import java.util.Date;
+
 /**
  * Diese Klasse repräsentiert Ein Barbarendorf
+ * 
  * @author Effi
  *
  */
-public class Babarendorf extends Dorf {
-	
-	private long letzterAngriff;
+public class Babarendorf extends Gegnerdorf {
 
 	public Babarendorf(int x, int y) {
 		super(x, y, "Barbarendorf");
 	}
 
-	public long getLetzterAngriff() {
-		return letzterAngriff;
+	public Babarendorf(int x, int y, long gefarmed) {
+		super(x, y, "Babarendorf");
+		this.setLetzterAngriff(gefarmed);
 	}
 
-	public void setLetzterAngriff(long letzterAngriff) {
-		this.letzterAngriff = letzterAngriff;
+	public boolean farmable() {
+
+		if (this.getLetzterAngriff() + (60 * 60 * 1000) < new Date().getTime())
+			return true;
+		return false;
 	}
 
 }

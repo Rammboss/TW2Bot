@@ -31,6 +31,16 @@ public class MouseRobot {
 		User32.INSTANCE.PostMessage(hWnd, Keys.WM_LBUTTONUP, xx, yy);
 
 	}
+	public void click(int x, int y) {
+
+		WinDef.WPARAM xx = new WinDef.WPARAM(0);
+
+		WinDef.LPARAM yy = new WinDef.LPARAM(x + (y << 16));
+		User32.INSTANCE.PostMessage(hWnd, Keys.WM_LBUTTONDOWN, xx, yy);
+
+		User32.INSTANCE.PostMessage(hWnd, Keys.WM_LBUTTONUP, xx, yy);
+
+	}
 
 	public void doubleClick(Button b) {
 		click(b);

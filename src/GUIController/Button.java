@@ -10,10 +10,14 @@ public class Button {
 	private Point point;
 	private IconInterface icon;
 
-	public Button(Point point, String path) {
+	public Button(int x, int y, String path) {
 		super();
-		this.point = point;
+		this.point = new Point(x, y);
 		this.icon = new Icon(point, new File(Utils.SCREENSHOT_PATH + path));
+	}
+	public Button(int x, int y) {
+		super();
+		this.point = new Point(x, y);
 	}
 
 	public boolean check() {
