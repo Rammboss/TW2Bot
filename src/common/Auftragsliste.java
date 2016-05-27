@@ -13,10 +13,19 @@ public class Auftragsliste implements AuftragslisteInterface {
 	private PriorityQueue<AuftragInterface> liste;
 
 	private int MAX_AUFTRAEGE;
+	
+	private static Auftragsliste singelton;
 
-	public Auftragsliste() {
+	private Auftragsliste() {
+		singelton = this;
 		liste = new PriorityQueue<AuftragInterface>();
 		MAX_AUFTRAEGE = Utils.PRIO_QUEUE_SIZE;
+	}
+	
+	public static Auftragsliste getAuftragsliste(){
+		if(singelton == null){
+			return new Auftragsliste();
+		}else return singelton;
 	}
 
 	@Override
@@ -50,10 +59,13 @@ public class Auftragsliste implements AuftragslisteInterface {
 	}
 
 	@Override
-	public int containsAuftraege(String typ) {
+	/**
+	 * Funktiniert nicht
+	 */
+	public int countsAuftraege(Class c) {
 		int counter = 0;
 		for(AuftragInterface a : liste){
-			if(typ.equals(a.getClass().toString()))
+			if(a.getClass().equals(c.getClass()))
 				counter++;
 		}
 		return counter;

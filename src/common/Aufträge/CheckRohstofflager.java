@@ -4,15 +4,17 @@ import java.util.Date;
 
 import GUIController.Buttons;
 import GUIController.MouseRobot;
-import bot.Rohstofflager;
+import accounts.Rohstofflager;
 
 public class CheckRohstofflager extends EnterKoordinaten {
 
 	private Rohstofflager rohstofflager;
 	private boolean item;
+	
+	public static final int PRIO_CHECKROHSTOFFLAGER = 6;
 
-	public CheckRohstofflager(int p, Rohstofflager lager, boolean item) {
-		super(p, lager.getPosition());
+	public CheckRohstofflager(Rohstofflager lager, boolean item) {
+		super(PRIO_CHECKROHSTOFFLAGER, lager.getPosition());
 		rohstofflager = lager;
 		this.item = item;
 	}
@@ -45,10 +47,9 @@ public class CheckRohstofflager extends EnterKoordinaten {
 			}
 
 		} else {
-
 			robot.click(510, 416);
-			MouseRobot.wait(1000);// Mitte des Bildschirms
-			robot.click(510, 416);
+			MouseRobot.wait(2000);
+			robot.click(510, 416);// Mitte des Bildschirms
 
 			MouseRobot.wait(1000);
 			robot.click(Buttons.ROHSTOFFLAGER_COLLECT);
@@ -56,7 +57,6 @@ public class CheckRohstofflager extends EnterKoordinaten {
 			robot.click(Buttons.ROHSTOFFLAGER_START);
 			MouseRobot.wait(1000);
 			robot.click(Buttons.CLOSE);
-			this.rohstofflager.setChecked(new Date().getTime());
 		}
 
 	}

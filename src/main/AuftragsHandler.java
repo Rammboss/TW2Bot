@@ -26,30 +26,30 @@ public class AuftragsHandler implements Runnable {
 		this.list = a;
 		farms = Filehandler.readData(new File("TXT\\c.txt"));
 		iter = farms.iterator();
-		Utils.ITER = Utils.ACCOUNTS.get(0).iterator();
+		Utils.ITER = Utils.CURRENT_ACCOUNT.getListe().iterator();
 		Utils.CURRENT = Utils.ITER.next();
 
 	}
 
-	private void addRohstofflager() {
-		if (list.containsAuftraege("class common.Aufträge.CheckRohstofflager") < 1
-				&& Utils.LAGER.getChecked() + (7 * 60 * 1000) < new Date().getTime()) {
-
-			list.add(new CheckRohstofflager(Utils.PRIO_CHECKROHSTOFFLAGER, Utils.LAGER, false));
-
-		}
-
-	}
+//	private void addRohstofflager() {
+//		//"class common.Aufträge.CheckRohstofflager"
+//		if (list.countsAuftraege(CheckRohstofflager.class) < 1
+//				&& Utils.LAGER.getChecked() + (7 * 60 * 1000) < new Date().getTime()) {
+//
+//			list.add(new CheckRohstofflager(Utils.LAGER, false));
+//
+//		}
+//	}
 
 	private void addFarms() {
 		Babarendorf baba;
-		
-		if(list.containsAuftraege("class common.Aufträge.AngriffDorf") <= 4){
+		//"class common.Aufträge.AngriffDorf"
+		if(list.countsAuftraege(AngriffDorf.class) <= 4){
 			if (iter.hasNext()) {
 				baba = iter.next();
 
 				if (baba.farmable())
-					this.list.add(new AngriffDorf(Utils.PRIO_ANGRIFFDORF, baba, Utils.CURRENT.getFarmHotkey()));
+					this.list.add(new AngriffDorf(baba, Utils.CURRENT.getFarmHotkey()));
 			}
 		}
 
@@ -66,7 +66,7 @@ public class AuftragsHandler implements Runnable {
 	}
 
 	public static void main(String[] args) {
-		AuftragslisteInterface list = new Auftragsliste();
+		AuftragslisteInterface list = Auftragsliste.getAuftragsliste();
 		MouseRobot robot = new MouseRobot(Utils.HWND);
 		GUIController gc = new GUIController(list, robot);
 		AuftragsHandler ah = new AuftragsHandler(list);
@@ -79,7 +79,7 @@ public class AuftragsHandler implements Runnable {
 	@Override
 	public void run() {
 		while (Utils.RUNNING) {
-			addRohstofflager();
+			//addRohstofflager();
 			addFarms();
 
 			MouseRobot.wait(3000);

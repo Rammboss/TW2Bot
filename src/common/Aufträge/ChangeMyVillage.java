@@ -3,20 +3,21 @@ package common.Aufträge;
 import GUIController.Buttons;
 import GUIController.MouseRobot;
 import bot.EigenesDorf;
+import bot.factories.BabaFarmFactory;
 
 public class ChangeMyVillage extends EnterKoordinaten {
 
-	public ChangeMyVillage(int p, EigenesDorf farm) {
-		super(p, farm.getPosition());
+	public ChangeMyVillage(int p, EigenesDorf dorf) {
+		super(p, dorf.getPosition());
 	}
 
 	public void run(MouseRobot robot) {
-		super.run(robot);
-		Buttons.CHANGE_CURRENT_VILLAGE.IsActive(5000);
-		if (Buttons.CHANGE_CURRENT_VILLAGE.check()) {
-
+		super.run(robot);	
+		if (Buttons.CHANGE_CURRENT_VILLAGE.IsActive(5000)) {
 			robot.click(Buttons.CHANGE_CURRENT_VILLAGE);
 		}
+		
+		BabaFarmFactory.sortFarms();
 
 	}
 
