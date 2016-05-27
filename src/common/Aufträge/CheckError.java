@@ -23,7 +23,7 @@ public class CheckError extends EnterKoordinaten {
 				new ChangeMyVillage(1, Utils.CURRENT).run(robot);
 
 			} else {
-				Utils.ITER = Utils.ACCOUNTS.get(0).iterator();
+				Utils.ITER = Utils.CURRENT_ACCOUNT.getListe().iterator();
 				Utils.CURRENT = Utils.ITER.next();
 			}
 

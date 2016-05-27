@@ -15,6 +15,7 @@ public class Icon implements IconInterface {
 	private BufferedImage image;
 
 	private ImageHandler ih;
+	private File path;
 
 	public Icon(Point point, File path) {
 		super();
@@ -22,6 +23,7 @@ public class Icon implements IconInterface {
 				Utils.ICON_SIZE * 2);
 		this.image = Filehandler.loadImage(path, rect);
 		this.ih = new ImageHandler();
+		this.path = path;
 
 	}
 
@@ -37,16 +39,17 @@ public class Icon implements IconInterface {
 	public boolean isActive(int withinMillisecounds) {
 		int counter = 0;
 
-		while (counter < withinMillisecounds / 500.0) {
+		while (counter < withinMillisecounds / 200) {
 			if (check()) {
 				System.out.println(check());
 				return true;
 			} else {
-				MouseRobot.wait(500);
+				MouseRobot.wait(200);
 			}
 			counter++;
 
 		}
+		System.out.println(this.path);
 		return false;
 
 	}
