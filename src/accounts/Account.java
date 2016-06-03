@@ -1,6 +1,5 @@
 package accounts;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import bot.EigenesDorf;
@@ -15,9 +14,6 @@ public class Account {
 		this.liste = liste;
 		this.name = name;
 		this.lager = lager;
-	}
-	private Account(){
-		
 	}
 	public List<EigenesDorf> getListe() {
 		return liste;

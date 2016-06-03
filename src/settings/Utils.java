@@ -2,10 +2,8 @@ package settings;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import com.sun.jna.platform.win32.User32;
-import com.sun.jna.platform.win32.Advapi32Util.Account;
 import com.sun.jna.platform.win32.WinDef.HWND;
 
 import accounts.Rohstofflager;
@@ -14,7 +12,7 @@ import bot.EigenesDorf;
 public class Utils {
 
 	public static final String APP_PLAYER_WINDOW_TITLE = "Tribal Wars 2 (1.55) - Mozilla Firefox";
-	public static final String SCREENSHOT_PATH = "Screenshots\\";
+	public static final String SCREENSHOT_PATH = "C:\\Temp\\TW2Bot\\Screenshots\\";
 
 	public static  Iterator<EigenesDorf> ITER = null;
 	public static  EigenesDorf CURRENT = null;
@@ -46,7 +44,7 @@ public class Utils {
 			, "DerZurecker", new Rohstofflager(418, 406));
 	
 	public static accounts.Account Rammboss = new accounts.Account(new ArrayList<EigenesDorf>()
-			, "DerZurecker", new Rohstofflager(418, 406));
+			, "DerZurecker", new Rohstofflager(413, 423));
 	
 	public static accounts.Account DonPorro = new accounts.Account(new ArrayList<EigenesDorf>()
 			, "DerZurecker", new Rohstofflager(418, 406));
@@ -123,15 +121,16 @@ public class Utils {
 		DonPorro.liste.add(new EigenesDorf(4, 415, 410, "Canoa"));
 		DonPorro.liste.add(new EigenesDorf(3, 409, 410, "Cali"));
 		DonPorro.liste.add(new EigenesDorf(3, 410, 411, "Monta Nita"));
-
 		DonPorro.liste.add(new EigenesDorf(3, 412, 408, "Iquitos"));
 
 		ACCOUNTS.add(DerZurecker);
 		ACCOUNTS.add(Rammboss);
 		ACCOUNTS.add(DonPorro);
-		
-		CURRENT = ACCOUNTS.get(0).getListe().get(0);
-		CURRENT_ACCOUNT = ACCOUNTS.get(0);
+
+		CURRENT_ACCOUNT = ACCOUNTS.get(1);
+
+		CURRENT = CURRENT_ACCOUNT.getListe().get(1);
+		ITER = CURRENT_ACCOUNT.liste.iterator();
 
 	}
 

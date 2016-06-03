@@ -34,7 +34,7 @@ public class BabaFarmFactory {
 		for(Dorf d : babaliste){
 			System.out.println(d.getClass() + "  " + i++);
 		}
-		this.sortFarms();
+		BabaFarmFactory.sortFarms();
 	}
 	
 	public static void sortFarms(){
