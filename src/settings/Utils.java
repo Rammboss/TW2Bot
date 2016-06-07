@@ -11,7 +11,7 @@ import bot.EigenesDorf;
 
 public class Utils {
 
-	public static final String APP_PLAYER_WINDOW_TITLE = "Tribal Wars 2 (1.55) - Mozilla Firefox";
+	public static final String APP_PLAYER_WINDOW_TITLE = "Tribal Wars 2 (1.56) - Mozilla Firefox";
 	public static final String SCREENSHOT_PATH = "C:\\Temp\\TW2Bot\\Screenshots\\";
 
 	public static  Iterator<EigenesDorf> ITER = null;
