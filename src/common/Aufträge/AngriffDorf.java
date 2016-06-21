@@ -8,6 +8,7 @@ import GUIController.GUIController;
 import GUIController.MouseRobot;
 import bot.Babarendorf;
 import bot.Gegnerdorf;
+import settings.Utils;
 
 public class AngriffDorf extends CheckError {
 
@@ -25,13 +26,13 @@ public class AngriffDorf extends CheckError {
 	public void run(MouseRobot robot) {
 		super.run(robot);
 		if (checkDorf()) {
-			robot.enterKoordinate(getHotkey());
+			robot.enterKoordinate(getHotkey(robot));
 			Date d = new Date();
 			farm.setLetzterAngriff(d.getTime());
 		}
 	}
 	
-	private int getHotkey(){
+	private int getHotkey(MouseRobot robot){
 		if(!Buttons.SPEER_0.check()){
 			System.out.println("SPEER Verfügbar");
 			return 1;
@@ -62,6 +63,15 @@ public class AngriffDorf extends CheckError {
 		}
 		else {
 			System.out.println("Keine Einheiten Verfügbar");
+			if (Utils.ITER.hasNext()) {
+				Utils.CURRENT = Utils.ITER.next();
+
+				new ChangeMyVillage(1, Utils.CURRENT).run(robot);
+
+			} else {
+				Utils.ITER = Utils.CURRENT_ACCOUNT.getListe().iterator();
+				Utils.CURRENT = Utils.ITER.next();
+			}
 			return 7;
 		}
 	}
