@@ -14,7 +14,7 @@ public class RostofflagerFactory {
 	
 	private long lastCheck;
 	
-	private static boolean USE_ITEM = true;
+	private static boolean USE_ITEM = false;
 	
 	private static final int INTERVALL = 5;
 	

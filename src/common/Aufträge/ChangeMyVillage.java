@@ -4,7 +4,6 @@ import GUIController.Buttons;
 import GUIController.MouseRobot;
 import bot.EigenesDorf;
 import bot.factories.BabaFarmFactory;
-import settings.Utils;
 
 public class ChangeMyVillage extends EnterKoordinaten {
 
@@ -16,8 +15,6 @@ public class ChangeMyVillage extends EnterKoordinaten {
 		super.run(robot);	
 		if (Buttons.CHANGE_CURRENT_VILLAGE.IsActive(5000)) {
 			robot.click(Buttons.CHANGE_CURRENT_VILLAGE);
-			
-			
 		}
 		
 		BabaFarmFactory.sortFarms();

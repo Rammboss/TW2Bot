@@ -10,7 +10,7 @@ public class CheckRohstofflager extends EnterKoordinaten {
 
 	private Rohstofflager rohstofflager;
 	private boolean item;
-
+	
 	public static final int PRIO_CHECKROHSTOFFLAGER = 6;
 
 	public CheckRohstofflager(Rohstofflager lager, boolean item) {
@@ -28,22 +28,23 @@ public class CheckRohstofflager extends EnterKoordinaten {
 			MouseRobot.wait(1000);// Mitte des Bildschirms
 			robot.click(510, 416);
 
-			MouseRobot.wait(2000);
-			robot.click(Buttons.ROHSTOFFLAGER_COLLECT);
-			MouseRobot.wait(2000);
-			if (!Buttons.ROHSTOFFLAGER_START.check()) {
+			while (true) {
+				MouseRobot.wait(1000);
+				robot.click(Buttons.ROHSTOFFLAGER_COLLECT);
+				MouseRobot.wait(1000);
+				if (!Buttons.ROHSTOFFLAGER_START.check()) {
 
-				robot.click(Buttons.USEITEM);
-				MouseRobot.wait(2000);
+					robot.click(Buttons.USEITEM);
+					MouseRobot.wait(2000);
 
-				robot.click(Buttons.USEGEGENSTAND);
-				MouseRobot.wait(2000);
+					robot.click(Buttons.USEGEGENSTAND);
+					MouseRobot.wait(2000);
 
-			} else {
-				robot.click(Buttons.ROHSTOFFLAGER_START);
-				MouseRobot.wait(2000);
+				} else {
+					robot.click(Buttons.ROHSTOFFLAGER_START);
+				}
+				MouseRobot.wait(10000);
 			}
-			robot.click(Buttons.CLOSE);
 
 		} else {
 			robot.click(510, 416);
